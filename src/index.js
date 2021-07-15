@@ -3,6 +3,7 @@ async function setup() {
   const canvas = document.getElementById('gameOfLife');
   const startButton = document.getElementById('start');
   const stopButton = document.getElementById('stop');
+  const randomizeButton = document.getElementById('randomize');
   const generation = document.getElementById('generation');
 
   const screenHeight = canvas.clientHeight;
@@ -12,11 +13,6 @@ async function setup() {
   const rows = Math.floor(screenHeight / cellSize);
 
   gameOfLife = new GameOfLife(cols, rows);
-  gameOfLife.randomizeGrid();
-  // gameOfLife.setCell(1, 2, 1);
-  // gameOfLife.setCell(1, 3, 1);
-  // gameOfLife.setCell(1, 4, 1);
-
 
   var ctx = canvas.getContext('2d');
   ctx.width = cols * cellSize;
@@ -35,11 +31,11 @@ async function setup() {
       ctx.strokeStyle = "#808080";
       ctx.strokeRect(x, y, cellSize, cellSize);
     })
+    generation.innerHTML = `${gameOfLife.genetation}`
   }
 
   drawNext = () => {
     gameOfLife.nextGen();
-    generation.innerHTML = `${gameOfLife.genetation}`
     draw();
   }
 
@@ -50,8 +46,14 @@ async function setup() {
   stop = () => {
     clearInterval(game);
   }
+
+  randomize = () => {
+    gameOfLife.randomizeGrid();
+    draw();
+  }
   draw();
 
   startButton.onclick = start;
   stopButton.onclick = stop;
+  randomizeButton.onclick = randomize;
 }
