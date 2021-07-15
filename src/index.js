@@ -9,20 +9,21 @@ async function setup() {
 
   gameOfLife = new GameOfLife(cols, rows);
   gameOfLife.randomizeGrid();
+  // gameOfLife.setCell(1, 2, 1);
+  // gameOfLife.setCell(1, 3, 1);
+  // gameOfLife.setCell(1, 4, 1);
 
 
   var ctx = canvas.getContext('2d');
   ctx.width = cols * cellSize;
   ctx.height = rows * cellSize;
-
-  draw();
   
-  function draw() {
+  draw = () => {
     gameOfLife.iterateGrid((i, j, cell) => {
       const x = i * cellSize;
       const y = j * cellSize;
       if (cell == 1) {
-        ctx.fillStyle = "#f5f50a";
+        ctx.fillStyle = "#F5F50A";
       } else {
         ctx.fillStyle = "#C8C8C8"
       }
@@ -32,4 +33,15 @@ async function setup() {
     })
   }
 
+  drawNext = () => {
+    gameOfLife.nextGen();
+    draw();
+  }
+
+  start = () => {
+    return setInterval(drawNext, 100);
+  }
+  
+  draw();
+  start();
 }
