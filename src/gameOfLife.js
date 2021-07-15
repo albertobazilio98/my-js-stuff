@@ -31,4 +31,15 @@ export class GameOfLife {
       }
     }
   }
+
+  countNeighbors() {
+    this.iterateGrid((i, j) => {
+      for (let k = -1; k <= 1; k++) {
+        for(let l = -1; l <= 1; l++) {
+          
+        }
+      }
+
+    })
+  }
 };
