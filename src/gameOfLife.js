@@ -1,12 +1,14 @@
 export class GameOfLife {
 
   constructor(cols, rows) {
-    this.grid = new Array(cols);
-    this.genetation = 0;
     this.cols = cols;
     this.rows = rows;
-
-    this.grid = this.createGrid(cols, rows);
+    this.newGame();
+  }
+  
+  newGame() {
+    this.genetation = 0;
+    this.grid = this.createGrid(this.cols, this.rows);
   }
 
   createGrid(cols, rows) {

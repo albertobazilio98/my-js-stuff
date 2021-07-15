@@ -1,9 +1,9 @@
 async function setup() {
   const { GameOfLife } = await import('./gameOfLife.js');
   const canvas = document.getElementById('gameOfLife');
-  const startButton = document.getElementById('start');
-  const stopButton = document.getElementById('stop');
+  const startStopButton = document.getElementById('start');
   const randomizeButton = document.getElementById('randomize');
+  const clearButton = document.getElementById('clear');
   const generation = document.getElementById('generation');
 
   const screenHeight = canvas.clientHeight;
@@ -39,23 +39,34 @@ async function setup() {
     draw();
   }
 
-  start = () => {
-    game = setInterval(drawNext, 100);
-  }
+  let game;
 
-  stop = () => {
-    clearInterval(game);
-  }
+  startStop = () => {
+    if (game) {
+      clearInterval(game);
+      startStopButton.innerHTML = 'start';
+      game = undefined;
+    } else {
+      startStopButton.innerHTML = 'stop';
+      game = setInterval(drawNext, 100);
+    }
+  };
 
   randomize = () => {
     gameOfLife.randomizeGrid();
     draw();
+  };
+
+  clear = () => {
+    gameOfLife.newGame();
+    draw();
   }
+
   draw();
 
-  startButton.onclick = start;
-  stopButton.onclick = stop;
+  startStopButton.onclick = startStop;
   randomizeButton.onclick = randomize;
+  clearButton.onclick = clear;
 
   getCursorPosition = (canvas, event) => {
     const rect = canvas.getBoundingClientRect()
