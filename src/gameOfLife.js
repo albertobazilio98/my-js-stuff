@@ -8,10 +8,10 @@ export class GameOfLife {
   
   newGame() {
     this.genetation = 0;
-    this.grid = this.createGrid(this.cols, this.rows);
+    this.grid = GameOfLife.createGrid(this.cols, this.rows);
   }
 
-  createGrid(cols, rows) {
+  static createGrid(cols, rows) {
     let grid = new Array(cols);
     for (let i = 0; i < cols; i++) {
       grid[i] = new Array(rows);
@@ -61,7 +61,7 @@ export class GameOfLife {
   }
 
   nextGen() {
-    const nextGrid = this.createGrid(this.cols, this.rowss);
+    const nextGrid = GameOfLife.createGrid(this.cols, this.rowss);
     this.genetation++;
     this.iterateGrid((i, j) => {
       const neighbors = this.countNeighbors(i, j);

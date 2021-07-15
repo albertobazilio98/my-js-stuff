@@ -12,13 +12,13 @@ async function setup() {
   const cols = Math.floor(screenWidth / cellSize);
   const rows = Math.floor(screenHeight / cellSize);
 
-  gameOfLife = new GameOfLife(cols, rows);
+  const gameOfLife = new GameOfLife(cols, rows);
 
   var ctx = canvas.getContext('2d');
   ctx.width = cols * cellSize;
   ctx.height = rows * cellSize;
   
-  draw = () => {
+  const draw = () => {
     gameOfLife.iterateGrid((i, j, cell) => {
       const x = i * cellSize;
       const y = j * cellSize;
@@ -34,14 +34,14 @@ async function setup() {
     generation.innerHTML = `${gameOfLife.genetation}`
   }
 
-  drawNext = () => {
+  const drawNext = () => {
     gameOfLife.nextGen();
     draw();
   }
 
   let game;
 
-  startStop = () => {
+  const startStop = () => {
     if (game) {
       clearInterval(game);
       startStopButton.innerHTML = 'start';
@@ -52,31 +52,32 @@ async function setup() {
     }
   };
 
-  randomize = () => {
+  const randomize = () => {
     gameOfLife.randomizeGrid();
     draw();
   };
 
-  clear = () => {
+  const clear = () => {
     gameOfLife.newGame();
     draw();
   }
 
-  draw();
-
+  
   startStopButton.onclick = startStop;
   randomizeButton.onclick = randomize;
   clearButton.onclick = clear;
-
-  getCursorPosition = (canvas, event) => {
+  
+  const getCursorPosition = (canvas, event) => {
     const rect = canvas.getBoundingClientRect()
     const x = Math.floor((event.clientX - rect.left) / cellSize);
     const y = Math.floor((event.clientY - rect.top) / cellSize);
     return[x, y];
   }
-
+  
   canvas.addEventListener('mousedown', (e) => {
     gameOfLife.toggleCell(...getCursorPosition(canvas, e));
     draw();
-  })
+  });
+
+  draw();
 }
