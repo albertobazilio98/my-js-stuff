@@ -54,6 +54,10 @@ export class GameOfLife {
     this.grid[i][j] = value;
   }
 
+  toggleCell(i, j) {
+    this.grid[i][j] = this.grid[i][j] ? 0 : 1;
+  }
+
   nextGen() {
     const nextGrid = this.createGrid(this.cols, this.rowss);
     this.genetation++;

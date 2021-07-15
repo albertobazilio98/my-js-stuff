@@ -56,4 +56,16 @@ async function setup() {
   startButton.onclick = start;
   stopButton.onclick = stop;
   randomizeButton.onclick = randomize;
+
+  getCursorPosition = (canvas, event) => {
+    const rect = canvas.getBoundingClientRect()
+    const x = Math.floor((event.clientX - rect.left) / cellSize);
+    const y = Math.floor((event.clientY - rect.top) / cellSize);
+    return[x, y];
+  }
+
+  canvas.addEventListener('mousedown', (e) => {
+    gameOfLife.toggleCell(...getCursorPosition(canvas, e));
+    draw();
+  })
 }
