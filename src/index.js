@@ -1,6 +1,10 @@
 async function setup() {
   const { GameOfLife } = await import('./gameOfLife.js');
   const canvas = document.getElementById('gameOfLife');
+  const startButton = document.getElementById('start');
+  const stopButton = document.getElementById('stop');
+  const generation = document.getElementById('generation');
+
   const screenHeight = canvas.clientHeight;
   const screenWidth = canvas.clientWidth;
   const cellSize = 20;
@@ -35,13 +39,19 @@ async function setup() {
 
   drawNext = () => {
     gameOfLife.nextGen();
+    generation.innerHTML = `${gameOfLife.genetation}`
     draw();
   }
 
   start = () => {
-    return setInterval(drawNext, 100);
+    game = setInterval(drawNext, 100);
   }
-  
+
+  stop = () => {
+    clearInterval(game);
+  }
   draw();
-  start();
+
+  startButton.onclick = start;
+  stopButton.onclick = stop;
 }
