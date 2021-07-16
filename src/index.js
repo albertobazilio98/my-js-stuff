@@ -1,5 +1,4 @@
 async function setup() {
-  const { GameOfLife } = await import('./gameOfLife.js');
   const canvas = document.getElementById('gameOfLife');
   const startStopButton = document.getElementById('start');
   const randomizeButton = document.getElementById('randomize');

@@ -1,49 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Game of life</title>
-    <script type="text/javascript" src="src/index.js"></script>
+    <title>My js stuff</title>
     <style>
-      .canvas {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      h1 {
+        margin: unset;
       }
-      .control {
-        margin-top: 16px;
-        padding: 16px;
+      .navbar {
         display: flex;
-        justify-content: space-between;
-        width: 700px;
+        padding: 8px;
       }
-      .control-button {
-        display: flex;
-        justify-content: center;
-        width: 96px;
-        border-style: solid;
-        padding: 4px;
-        border-width: 1px;
-        border-color: black;
-        border-radius: 8px;
-        cursor: pointer;
+      .navbar .page-name {
+        margin-right: auto;
       }
-      .info {
-        padding: 16px;
+      .navbar a.link {
+        align-self: flex-end;
       }
     </style>
   </head>
-  <body onload="setup()">
-    <div class="canvas">
-      <div class="info">
-        <div class="generation" id="generation">0</div>
-      </div>
-      <canvas width="700" height="700" id="gameOfLife"></canvas>
-      <div class="control">
-        <div class="control-button" id="start">start</div>
-        <div class="control-button" id="randomize">randomize</div>
-        <div class="control-button" id="clear">clear</div>
-      </div>
-    </div>
+  <body>
+    <nav class="navbar">
+      <h1 class="page-name">My js stuff</h1>
+      <a class="link" href="/game-of-life.html">Game of life</a>
+    </nav>
   </body>
 </html>

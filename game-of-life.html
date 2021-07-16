@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game of life</title>
+    <script type="text/javascript" src="src/index.js"></script>
+    <script type="text/javascript" src="src/gameOfLife.js"></script>
+    <style>
+      .canvas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .control {
+        margin-top: 16px;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        width: 700px;
+      }
+      .control-button {
+        display: flex;
+        justify-content: center;
+        width: 96px;
+        border-style: solid;
+        padding: 4px;
+        border-width: 1px;
+        border-color: black;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .info {
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body onload="setup()">
+    <div class="canvas">
+      <div class="info">
+        <div class="generation" id="generation">0</div>
+      </div>
+      <canvas width="700" height="700" id="gameOfLife"></canvas>
+      <div class="control">
+        <div class="control-button" id="start">start</div>
+        <div class="control-button" id="randomize">randomize</div>
+        <div class="control-button" id="clear">clear</div>
+      </div>
+    </div>
+  </body>
+</html>

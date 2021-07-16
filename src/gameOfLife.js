@@ -1,4 +1,4 @@
-export class GameOfLife {
+class GameOfLife {
 
   constructor(cols, rows) {
     this.cols = cols;
