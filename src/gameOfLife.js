@@ -7,7 +7,7 @@ export class GameOfLife {
   }
   
   newGame() {
-    this.genetation = 0;
+    this.generation = 0;
     this.grid = GameOfLife.createGrid(this.cols, this.rows);
   }
 
@@ -28,7 +28,7 @@ export class GameOfLife {
   }
 
   randomizeGrid() {
-    this.genetation = 0;
+    this.generation = 0;
     this.iterateGrid((i, j) => {
       this.grid[i][j] = Math.round(Math.random());
     })
@@ -62,7 +62,7 @@ export class GameOfLife {
 
   nextGen() {
     const nextGrid = GameOfLife.createGrid(this.cols, this.rowss);
-    this.genetation++;
+    this.generation++;
     this.iterateGrid((i, j) => {
       const neighbors = this.countNeighbors(i, j);
       if (neighbors < 2 || neighbors > 3) {

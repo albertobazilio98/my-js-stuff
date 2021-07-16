@@ -31,7 +31,7 @@ async function setup() {
       ctx.strokeStyle = "#808080";
       ctx.strokeRect(x, y, cellSize, cellSize);
     })
-    generation.innerHTML = `${gameOfLife.genetation}`
+    generation.innerHTML = `${gameOfLife.generation}`
   }
 
   const drawNext = () => {
