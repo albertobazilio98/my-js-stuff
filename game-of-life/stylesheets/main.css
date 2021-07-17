@@ -1,0 +1,27 @@
+.canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.control {
+  margin-top: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+}
+.control-button {
+  display: flex;
+  justify-content: center;
+  width: 96px;
+  border-style: solid;
+  padding: 4px;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.info {
+  padding: 16px;
+}
