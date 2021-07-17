@@ -1,4 +1,4 @@
-async function setup() {
+function setup() {
   const canvas = document.getElementById('gameOfLife');
   const startStopButton = document.getElementById('start');
   const randomizeButton = document.getElementById('randomize');
