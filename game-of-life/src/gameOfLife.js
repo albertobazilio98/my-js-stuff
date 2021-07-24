@@ -1,5 +1,4 @@
 class GameOfLife {
-
   constructor(cols, rows) {
     this.cols = cols;
     this.rows = rows;
@@ -42,10 +41,10 @@ class GameOfLife {
     }
   }
 
-  countNeighbors(i, j) {
+  countNeighbors(x, y) {
     let count = 0;
-    for (let k = Math.max(i - 1, 0); k < Math.min(i + 2, this.cols); k++) {
-      for(let l = Math.max(j - 1, 0); l < Math.min(j + 2, this.rows); l++) {
+    for (let k = Math.max(x - 1, 0); k < Math.min(x + 2, this.cols); k++) {
+      for (let l = Math.max(y - 1, 0); l < Math.min(y + 2, this.rows); l++) {
         count += this.grid[k][l];
       }
     }
