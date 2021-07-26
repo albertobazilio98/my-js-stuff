@@ -12,7 +12,6 @@ class Minesweeper {
   newGame() {
     for (let i = 0; i < this.bombs; i++) {
       let [j, k] = [Minesweeper.random(0, this.cols - 1), Minesweeper.random(0, this.rows - 1)];
-      console.log(j, k)
       while (this.getCell(j, k).bomb) {
         [j, k] = [Minesweeper.random(0, this.cols - 1), Minesweeper.random(0, this.rows - 1)];
       }
@@ -31,7 +30,7 @@ class Minesweeper {
 
       for (let j = 0; j < rows; j++) {
         grid[i][j] = {
-          state: 0,
+          active: 0,
           bomb: 0,
           count: null,
           marked: 0,
@@ -41,13 +40,16 @@ class Minesweeper {
     return grid;
   }
 
+  gameOver() {
+    this.status = 'game_over';
+  }
+
   selectCell(x, y) {
     const cell = this.getCell(x, y);
-    if (cell.state || cell.marked) return;
+    if (cell.active || cell.marked || this.status == 'game_over') return;
     if (cell.bomb) {
-      console.log('game over')
-      this.status = 'game_over';
-      this.setCell(x, y, { state: 1 });
+      this.gameOver();
+      this.setCell(x, y, { active: 1, marked: 0 });
     } else {
       this.checkBlanks(x, y);
     }
@@ -55,7 +57,7 @@ class Minesweeper {
 
   toggleMark(x, y) {
     const cell = this.getCell(x, y);
-    if (cell.state) return;
+    if (cell.active || this.status == 'game_over') return;
     if (cell.marked) {
       this.setCell(x, y, { marked: 0 });
       this.marks--;
@@ -85,10 +87,10 @@ class Minesweeper {
 
   checkBlanks(x, y) {
     const bombs = this.countBombs(x, y);
-    this.setCell(x, y, { state: 1, count: bombs })
+    this.setCell(x, y, { active: 1, count: bombs })
     if (!bombs) {
       this.checkNeighbors(x, y, (i, j, cell) => {
-        if (!cell.state) {
+        if (!cell.active) {
           this.checkBlanks(i, j);
         }
       });

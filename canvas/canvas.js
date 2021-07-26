@@ -16,9 +16,15 @@ class Canvas2d {
     this.ctx.strokeRect(...position, ...size);
   }
 
-  write(text, position, font = '28px',  style = 'black') {
+  write(text, position, style = 'black', font = "bold 12px 'Noto Sans TC'") {
     this.ctx.fillStyle = style;
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
     this.ctx.font = font;
     this.ctx.fillText(text, ...position);
+  }
+
+  placeImage(image, position, size) {
+    this.ctx.drawImage(image, ...position, ...size);
   }
 }
