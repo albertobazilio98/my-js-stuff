@@ -48,7 +48,7 @@ class GameOfLife {
         count += this.grid[k][l];
       }
     }
-    return(count - this.grid[i][j]);
+    return(count - this.grid[x][y]);
   }
 
   setCell(i, j, value) {
