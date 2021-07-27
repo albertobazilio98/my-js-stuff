@@ -8,7 +8,7 @@ class Minesweeper {
     this.status = 'ok';
     this.cols = cols;
     this.rows = rows;
-    this.bombs = bombs;
+    this.bombs = Math.min(cols * rows - 1, bombs);
     this.bombsLeft = bombs;
     this.startTime = new Date().getTime();
     this.timeSpent = null;

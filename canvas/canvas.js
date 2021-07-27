@@ -23,7 +23,7 @@ class Canvas2d {
     this.ctx.strokeRect(...position, ...size);
   }
 
-  write(text, position, style = 'black', font = "bold 12px 'Noto Sans TC'") {
+  write(text, position, style = 'black', font = "bold 14px 'Merriweather Sans'") {
     this.ctx.fillStyle = style;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';

@@ -10,7 +10,7 @@ function setup() {
   const cellSize = 20;
   const cols = Math.floor(canvas.width / cellSize);
   const rows = Math.floor(canvas.height / cellSize);
-
+  const colors = ['blue', 'green', 'red', 'purple', 'maroon', 'turquoise', 'black', 'gray'];
   
   const minesweeper = new Minesweeper(cols, rows, 250);
 
@@ -33,7 +33,7 @@ function setup() {
       if (cell.active) {
         canvas.fill([x + 1, y + 1], [cellSize - 4, cellSize - 4], '#A9A9A9');
         if (cell.count) {
-          canvas.write(cell.count, [x + cellSize / 2 - 1, y + cellSize / 2 - 1]);
+          canvas.write(cell.count, [x + cellSize / 2 - 1, y + cellSize / 2 - 1], colors[cell.count - 1]);
         }
         if (minesweeper.status == 'game_over' && cell.bomb) {
           canvas.placeImage(bomb, [x + 4, y + 4], [cellSize - 8, cellSize - 8]);
