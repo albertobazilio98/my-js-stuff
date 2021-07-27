@@ -13,6 +13,24 @@
   <body onload="setup()">
     <div class="game">
       <canvas width="700" height="700" id="minesweeper"></canvas>
+      <div class="info">
+        <div class="control">
+          <label for="cols">Number of columns:</label>
+          <input  type="number" value="35" id="colsNumber" name="cols">
+          <label for="rows">Number of rows:</label>
+          <input  type="number" value="35" id="rowsNumber" name="rows">
+          <label for="bombs">Number of bombs:</label>
+          <input  type="number" value="250" id="bombsNumber" name="bombs">
+          <div class="control-button" id="newGame">new game</div>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="status">
+          <div class="label">Bombs left:</div>
+          <div class="value">50</div>
+          <div class="label">Time left:</div>
+          <div class="value">50</div>
+        </div>
+      </div>
     </div>
     <img id="bombImage" src="./assets/bomb.svg" style="display: none">
     <img id="flagImage" src="./assets/flag.svg" style="display: none">

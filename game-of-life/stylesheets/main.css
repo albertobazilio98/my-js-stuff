@@ -11,7 +11,7 @@
   justify-content: space-between;
   width: 700px;
 }
-.control-button {
+.control .control-button {
   display: flex;
   justify-content: center;
   width: 96px;

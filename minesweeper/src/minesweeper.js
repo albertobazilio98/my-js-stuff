@@ -1,19 +1,22 @@
 class Minesweeper {
   constructor(cols, rows, bombs) {
+    this.newGame(cols, rows, bombs);
+  }
+
+  newGame(cols = this.cols, rows = this.rows, bombs = this.bombs) {
+    this.marks = 0;
+    this.status = 'ok';
     this.cols = cols;
     this.rows = rows;
     this.bombs = bombs;
     this.bombsLeft = bombs;
-    this.marks = 0;
-    this.status = 'ok';
-    this.grid = Minesweeper.createGrid(this.rows, this.cols)
-  }
+    this.grid = Minesweeper.createGrid(this.cols, this.rows);
+    console.log(this.grid)
 
-  newGame() {
     for (let i = 0; i < this.bombs; i++) {
-      let [j, k] = [Minesweeper.random(0, this.cols - 1), Minesweeper.random(0, this.rows - 1)];
+      let [j, k] = [Minesweeper.random(0, this.rows - 1), Minesweeper.random(0, this.cols - 1)];
       while (this.getCell(j, k).bomb) {
-        [j, k] = [Minesweeper.random(0, this.cols - 1), Minesweeper.random(0, this.rows - 1)];
+        [j, k] = [Minesweeper.random(0, this.rows - 1), Minesweeper.random(0, this.cols - 1)];
       }
       this.setCell(j, k, { bomb: 1 });
     }
@@ -23,7 +26,7 @@ class Minesweeper {
     return Math.ceil(Math.random() * (max - min) + min);
   }
 
-  static createGrid(cols, rows) {
+  static createGrid(rows, cols) {
     let grid = new Array(cols);
     for (let i = 0; i < cols; i++) {
       grid[i] = new Array(rows);
@@ -106,8 +109,8 @@ class Minesweeper {
   }
 
   checkNeighbors(x, y, callback) {
-    for(let i = Math.max(x - 1, 0); i < Math.min(x + 2, this.cols); i++) {
-      for(let j = Math.max(y - 1, 0); j < Math.min(y + 2, this.rows); j++) {
+    for(let i = Math.max(x - 1, 0); i < Math.min(x + 2, this.rows); i++) {
+      for(let j = Math.max(y - 1, 0); j < Math.min(y + 2, this.cols); j++) {
         if (x !== i || y !== j) {
           callback(i, j, this.getCell(i, j));
         }
@@ -116,8 +119,8 @@ class Minesweeper {
   }
 
   iterateGrid(callback) {
-    for (let i = 0; i < this.cols; i++) {
-      for (let j = 0; j < this.rows; j++) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
         callback(i, j, this.getCell(i, j));
       }
     }

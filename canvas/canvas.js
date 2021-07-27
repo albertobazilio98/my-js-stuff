@@ -6,6 +6,13 @@ class Canvas2d {
     this.height = canvas.clientHeight;
   }
 
+  update(width, height) {
+    this.width = width;
+    this.height = height;
+    this.element.width = width;
+    this.element.height = height;
+  }
+
   fill(position, size, style) {
     this.ctx.fillStyle = style;
     this.ctx.fillRect(...position, ...size);
