@@ -10,6 +10,8 @@ class Minesweeper {
     this.rows = rows;
     this.bombs = bombs;
     this.bombsLeft = bombs;
+    this.startTime = new Date().getTime();
+    this.timeSpent = null;
     this.grid = Minesweeper.createGrid(this.cols, this.rows);
     console.log(this.grid)
 
@@ -76,6 +78,7 @@ class Minesweeper {
     }
     if (this.bombsLeft === 0 && this.marks == this.bombs) {
       this.status = 'victory';
+      this.timeSpent = this.startTime - new Date().getTime();
       console.log('victory');
     }
   }

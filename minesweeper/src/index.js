@@ -5,11 +5,13 @@ function setup() {
   const newGameButton = document.getElementById('newGame');
   const bombsLeft = document.getElementById('bombsLeft');
   const gameStatus = document.getElementById('gameStatus');
+  const timeSpent = document.getElementById('timeSpent');
 
   const cellSize = 20;
   const cols = Math.floor(canvas.width / cellSize);
   const rows = Math.floor(canvas.height / cellSize);
 
+  
   const minesweeper = new Minesweeper(cols, rows, 250);
 
   const draw = () => {
@@ -18,8 +20,10 @@ function setup() {
     if (minesweeper.status === 'ok') {
       gameStatus.innerHTML = '👍';
     } else if (minesweeper.status === 'game_over') {
+      clearInterval(gameTimer)
       gameStatus.innerHTML = '👎';
     } else {
+      clearInterval(gameTimer)
       gameStatus.innerHTML = '🎉🎉🎉🎉🎉🎉🎉🎉';
     }
     minesweeper.iterateGrid((i, j, cell) => {
@@ -44,7 +48,7 @@ function setup() {
       }
     });
   }
-
+  
   const getCursorPosition = (canvas, event) => {
     const rect = canvas.getBoundingClientRect()
     const x = Math.floor((event.clientX - rect.left) / cellSize);
@@ -62,7 +66,18 @@ function setup() {
     draw();
   });
 
+    
+  const timer = () => {
+    const minutes = `${Math.floor((new Date().getTime() - minesweeper.startTime) / 60000)}`.padStart(2, 0);
+    const seconds = `${Math.floor((new Date().getTime() - minesweeper.startTime) / 1000) % 60}`.padStart(2, 0);
+    timeSpent.innerHTML = `${minutes}:${seconds}`;
+  }
+  
+  let gameTimer = setInterval(timer, 500);
+
   const newGame = () => {
+    clearInterval(gameTimer);
+    gameTimer = setInterval(timer, 500);
     const colsNumber = document.getElementById('colsNumber').value;
     const rowsNumber = document.getElementById('rowsNumber').value;
     const bombsNumber = document.getElementById('bombsNumber').value;
