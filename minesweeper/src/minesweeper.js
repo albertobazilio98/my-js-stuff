@@ -74,7 +74,7 @@ class Minesweeper {
         this.bombsLeft--;
       }
     }
-    if (this.bombsLeft === 0 && this.marks === this.bombs) {
+    if (this.bombsLeft === 0 && this.marks == this.bombs) {
       this.status = 'victory';
       console.log('victory');
     }
