@@ -3,18 +3,25 @@ function setup() {
   const bomb = document.getElementById('bombImage');
   const flag = document.getElementById('flagImage');
   const newGameButton = document.getElementById('newGame');
+  const bombsLeft = document.getElementById('bombsLeft');
+  const gameStatus = document.getElementById('gameStatus');
 
   const cellSize = 20;
-  let cols = Math.floor(canvas.width / cellSize);
-  let rows = Math.floor(canvas.height / cellSize);
+  const cols = Math.floor(canvas.width / cellSize);
+  const rows = Math.floor(canvas.height / cellSize);
 
   const minesweeper = new Minesweeper(cols, rows, 250);
 
   const draw = () => {
-    cols = minesweeper.cols// Math.floor(canvas.width / cellSize);
-    rows = minesweeper.rows// Math.floor(canvas.height / cellSize);
-
     canvas.fill([0, 0], [canvas.width, canvas.height], '#808080');
+    bombsLeft.innerHTML = minesweeper.bombs - minesweeper.marks;
+    if (minesweeper.status === 'ok') {
+      gameStatus.innerHTML = '👍';
+    } else if (minesweeper.status === 'game_over') {
+      gameStatus.innerHTML = '👎';
+    } else {
+      gameStatus.innerHTML = '🎉🎉🎉🎉🎉🎉🎉🎉';
+    }
     minesweeper.iterateGrid((i, j, cell) => {
       const x = i * cellSize;
       const y = j * cellSize;
@@ -59,9 +66,7 @@ function setup() {
     const colsNumber = document.getElementById('colsNumber').value;
     const rowsNumber = document.getElementById('rowsNumber').value;
     const bombsNumber = document.getElementById('bombsNumber').value;
-    canvas.update(rowsNumber * cellSize, colsNumber * cellSize)
-    // cols = Math.floor(canvas.width / cellSize);
-    // rows = Math.floor(canvas.height / cellSize);
+    canvas.update(rowsNumber * cellSize, colsNumber * cellSize);
     minesweeper.newGame(colsNumber, rowsNumber, bombsNumber);
 
     draw();
