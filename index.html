@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>My js stuff</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
       h1 {
         margin: unset;
@@ -19,6 +20,12 @@
         margin-left: 16px;
       }
     </style>
+    <link rel='manifest' href='/manifest.webmanifest'>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: './' })
+      }
+    </script>
   </head>
   <body>
     <nav class="navbar">
