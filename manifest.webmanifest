@@ -2,8 +2,8 @@
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
+    "scope": "/my-js-stuff/",
+    "start_url": "/my-js-stuff/",
     "name": "My Js Stuff",
     "short_name": "My Js Stuff",
     "icons": [
