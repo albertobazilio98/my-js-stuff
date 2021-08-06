@@ -1,3 +1,5 @@
+@import '../../../stylesheets/globals.css';
+
 .canvas {
   display: flex;
   flex-direction: column;
@@ -11,17 +13,10 @@
   justify-content: space-between;
   width: 700px;
 }
-.control .control-button {
-  display: flex;
-  justify-content: center;
-  width: 96px;
-  border-style: solid;
-  padding: 4px;
-  border-width: 1px;
-  border-color: black;
-  border-radius: 8px;
-  cursor: pointer;
+.control .outline-button {
+  width: 128px;
 }
+
 .info {
   padding: 16px;
 }

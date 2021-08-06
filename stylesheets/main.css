@@ -1,0 +1,12 @@
+@import './globals.css';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  justify-content: space-between;
+}
+.navbar .links a.link {
+  align-self: center;
+  margin-left: 16px;
+}

@@ -3,23 +3,9 @@
   <head>
     <title>My js stuff</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <style>
-      h1 {
-        margin: unset;
-      }
-      .navbar {
-        display: flex;
-        align-items: center;
-        padding: 8px;
-      }
-      .navbar .page-name {
-        margin-right: auto;
-      }
-      .navbar a.link {
-        align-self: center;
-        margin-left: 16px;
-      }
-    </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="stylesheet" href="./stylesheets/main.css">
     <link rel='manifest' href='./manifest.webmanifest'>
     <script>
       if ('serviceWorker' in navigator) {
@@ -30,8 +16,10 @@
   <body>
     <nav class="navbar">
       <h1 class="page-name">My js stuff</h1>
-      <a class="link" href="./game-of-life">Game of life</a>
-      <a class="link" href="./minesweeper/">Minesweeper</a>
+      <div class="links">
+        <a class="link" href="./game-of-life">Game of life</a>
+        <a class="link" href="./minesweeper">Minesweeper</a>
+      </div>
     </nav>
   </body>
 </html>

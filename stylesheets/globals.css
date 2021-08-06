@@ -1,0 +1,36 @@
+@import './reset.css';
+
+@font-face {
+	font-family: 'Merriweather Sans';
+	font-style: normal;
+	src: url('../assets/fonts/MerriweatherSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+	font-family: 'Merriweather Sans';
+	font-style: italic;
+	src: url('../assets/fonts/MerriweatherSans-Italic-VariableFont_wght.ttf');
+}
+
+body {
+  padding: 16px;
+  min-height: 100vh;
+  font-family: 'Merriweather Sans';
+	background-color: #181822;
+	color: #a9a9a9;
+}
+
+a {
+	color: #6f6f6f;
+}
+
+.outline-button {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  padding: 4px;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 8px;
+  cursor: pointer;
+}
